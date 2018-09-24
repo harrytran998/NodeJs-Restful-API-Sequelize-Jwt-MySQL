@@ -1,7 +1,7 @@
 {
   "name": "Ahihi",
   "version": "1.0.0",
-  "main": "app,js",
+  "main": "app.js",
   "repository": "https://github.com/jetaimefrc/jetaimefrc-Simple-API-MySQL.git",
   "author": "Nhat <jetaimefrc@gmail.com>",
   "license": "MIT",
