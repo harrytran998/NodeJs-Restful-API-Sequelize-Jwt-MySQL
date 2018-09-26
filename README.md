@@ -29,20 +29,10 @@ VALUES(1,'Ngoc Hoa',20000),
 	(8,'Manhattan',50000)
 ```
 
-## Installation necessary modules :
-
-```
-$ npm i express morgan mysql nodemon body-parser --save--dev
-If you using yarn => 
-$ yarn add express morgan mysql nodemon body-parser --save--dev
-```
-After install the modules, if you want to run dev project => 
-
 ```
 $ yarn dev
 ```
 So if you want to start this projet => 
-
 ```
 $ yarn start
 ```
