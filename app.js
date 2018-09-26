@@ -1,12 +1,18 @@
-const morgan = require('morgan')
-const express = require('express')
-const bitchs = require('./routes/bitchs')
+const Sequelize = require('sequelize');
+const env = process.env.NODE_ENV || 'development';
+const config = require('./config/config.json')[env];
 
-const app = express()
-app.use(bitchs)
-app.use(morgan("short"))
-
-let PORT = process.env.PORT || 3006
-app.listen(PORT, () => {
-    console.log(`Starting `)
+const sequelize = new Sequelize(config.database, config.username, config.password, {
+  host: config.host,
+  dialect: config.dialect,
+  operatorsAliases: false,
+  pool: {
+    max: 5,
+    min: 0,
+    acquire: 30000,
+    idle: 10000
+  }
 })
+sequelize.authenticate().then(() => {
+  console.log('connect succes !');
+}).catch(err => console.log(`Can't connect, ${err} !`))
