@@ -16,3 +16,33 @@ const sequelize = new Sequelize(config.database, config.username, config.passwor
 sequelize.authenticate().then(() => {
   console.log('connect succes !');
 }).catch(err => console.log(`Can't connect, ${err} !`))
+
+const User = sequelize.define('user', {
+  username: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    unique: true,
+  },
+  password: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      len: [2, 25]
+    }
+  }
+});
+
+// sequelize.sync().then(() => {
+//   User.create({
+//     username: 'jetaimefrc',
+//     password: '123456'
+//   })
+// }).catch((err) => console.log(err))
+
+User
+  .findById(1)
+  .then((result) => {
+  console.log(result.dataValues);  
+}).catch(() => console.log('Not found !'))
+
+module.exports = User
