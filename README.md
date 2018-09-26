@@ -29,6 +29,8 @@ VALUES(1,'Ngoc Hoa',20000),
 	(8,'Manhattan',50000)
 ```
 
+### To test Project
+
 ```
 $ yarn dev
 ```
