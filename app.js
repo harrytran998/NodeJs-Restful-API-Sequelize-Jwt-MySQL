@@ -12,7 +12,7 @@ const sequelize = new Sequelize(config.database, config.username, config.passwor
     acquire: 30000,
     idle: 10000
   },
-  port: 6996
+  port: 3306
 })
 
 sequelize.authenticate().then(() => {
@@ -31,7 +31,7 @@ const User = sequelize.define('user', {
     validate: {
       len: {
         args: [2, 25],
-        msg: `Password length must be in range [${args[0]}, ${args[1]}]`
+        msg: `Password length must be in range [2,25]`
       },
       /**
        * @param {String} bodyVal
@@ -39,7 +39,7 @@ const User = sequelize.define('user', {
       startWihtUpperCase: (bodyVal) => {
         let first = bodyVal.charAt(0)
         let check = first.toUpperCase === first
-        if(!check){
+        if(check){
           throw new Error('First character of password must be a uppercase character')
         }
       },
@@ -67,7 +67,7 @@ sequelize.sync({
 }).then(() => {
   User.create({
     username: 'jetaimefrc1',
-    password: 'jetaime123'
+    password: 'Jetaime1'
   })
 }).catch((err) => console.log(err))
 
