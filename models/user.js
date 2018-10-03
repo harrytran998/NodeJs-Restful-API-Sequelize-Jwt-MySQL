@@ -1,11 +1,35 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
-    firstName: DataTypes.STRING,
-    lastName: DataTypes.STRING,
-    email: DataTypes.STRING
-  }, {});
-  User.associate = function(models) {
+    username: {
+      type: DataTypes.STRING(255),
+      unique: true,
+      allowNull: false,
+      unique: true,
+      validate: {
+        args: [2, 25],
+        msg: "Length of username must in range [2, 25] !"
+      }
+    },
+    fullName: {
+      type: Sequelize.STRING,
+      validate: {
+        len: {
+          args: [2, 25],
+          msg: "Length of full name must in range [2, 25] !"
+        }}
+    },
+    email: {
+      type: Sequelize.STRING,
+      unique: true,
+      validate: {
+        isEmail: true
+      }
+    }
+  }, {
+    freezeTableName: true
+  });
+  User.associate = function (models) {
     // associations can be defined here
   };
   return User;
