@@ -1,3 +1,4 @@
+
 const Sequelize = require('sequelize');
 const env = process.env.NODE_ENV || 'development';
 const config = require('./config/config.json')[env];
@@ -9,7 +10,7 @@ const sequelize = new  Sequelize(config.database, config.username, config.passwo
   dialect: config.dialect,
   operatorsAliases: false,
   pool: {
-    max: 5,
+    max: 6,
     min: 0,
     acquire: 30000,
     idle: 10000
@@ -20,29 +21,3 @@ const sequelize = new  Sequelize(config.database, config.username, config.passwo
 sequelize.authenticate().then(() => {
   console.log('connect succes !');
 }).catch(err => console.log(`Can't connect, ${err} !`))
-
-
-User
-  .create({
-    username: 'Tri',
-    password: '*dasd123'
-  })
-  .then(() => {
-    User.findOrCreate({
-      where: {
-        username: 'Tri',
-      },
-      defaults: {
-        password: 'something'
-      }
-    })
-  })
-  .spread((user, created) => {
-    console.log(user.get({
-      plain: true
-    }))
-    console.log(created)
-  })
-  .catch((err) => {
-    console.log(err.Err)
-  })

@@ -1,4 +1,3 @@
-'use strict';
 
 module.exports = (sequelize, DataTypes) => {
   const Auth = sequelize.define('Auth', {
@@ -8,8 +7,8 @@ module.exports = (sequelize, DataTypes) => {
       unique: true,
       validate: {
         args: [2, 25],
-        msg: "Length of username must in range [2, 25] !"
-      }
+        msg: 'Length of username must in range [2, 25] !',
+      },
     },
     password: {
       type: DataTypes.STRING(255),
@@ -18,28 +17,28 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: {
           args: [2, 25],
-          msg: "Length of password must in range [2, 25] !"
+          msg: 'Length of password must in range [2, 25] !',
         },
         containsNumber: (password) => {
-          let check = /\d/.test(password)
+          const check = /\d/.test(password);
           if (!check) {
-            throw new Error('Password must contain at least 1 number')
+            throw new Error('Password must contain at least 1 number');
           }
         },
         /**
          * @param {String} pass
          */
         startWihtUpperCase: (pass) => {
-          let first = pass.charAt(0)
-          let check = first.toUpperCase === first
+          const first = pass.charAt(0);
+          const check = first.toUpperCase === first;
           if (check) {
-            throw new Error('First character of password must be a uppercase character')
+            throw new Error('First character of password must be a uppercase character');
           }
-        }
-      }
-    }
+        },
+      },
+    },
   }, {
-    freezeTableName: true
+    freezeTableName: true,
   });
   Auth.associate = () => {
   };

@@ -1,5 +1,4 @@
-'use strict';
-const bcrypt = require('bcrypt');
+import bcrypt from 'bcrypt-nodejs';
 
 module.exports = {
   up: async (queryInterface) => {
@@ -8,39 +7,38 @@ module.exports = {
       username: 'abcd123',
       password: await bcrypt.hash('Love123', salt),
       createdAt: new Date(),
-      updatedAt: new Date()
-    },{
+      updatedAt: new Date(),
+    }, {
       username: 'abcd456',
       password: await bcrypt.hash('Love123', salt),
       createdAt: new Date(),
-      updatedAt: new Date()
-    },{
+      updatedAt: new Date(),
+    }, {
       username: 'abcd789',
       password: await bcrypt.hash('Love123', salt),
       createdAt: new Date(),
-      updatedAt: new Date()
-    },{
+      updatedAt: new Date(),
+    }, {
       username: 'abcd1011',
       password: await bcrypt.hash('Love123', salt),
       createdAt: new Date(),
-      updatedAt: new Date()
-    },{
+      updatedAt: new Date(),
+    }, {
       username: 'abcd1213',
       password: await bcrypt.hash('Love123', salt),
       createdAt: new Date(),
-      updatedAt: new Date()
-    },{
+      updatedAt: new Date(),
+    }, {
       username: 'abcd1415',
       password: await bcrypt.hash('Love123', salt),
       createdAt: new Date(),
-      updatedAt: new Date()
-    }
-  ], {});
+      updatedAt: new Date(),
+    }], {});
   },
 
   down: (queryInterface) => {
     queryInterface.bulkDelete('Auth', [{
       // username: 'abcd1415'
     }]);
-  }
+  },
 };
