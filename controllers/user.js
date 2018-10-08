@@ -1,9 +1,9 @@
 import {
-  jsonHelper
-} from '../helpers/jsonResponse'
-import models from '../db/models'
+  jsonHelper,
+} from '../helpers/jsonResponse';
+import models from '../db/models';
 
-const bcrypt = require('bcrypt-nodejs')
+const bcrypt = require('bcrypt-nodejs');
 
 module.exports = {
   get: async (req, res) => {
@@ -45,7 +45,9 @@ module.exports = {
   },
   create: async (req, res) => {
     try {
-      const { _username, _password, _fullName, _email } = req.body;
+      const {
+        _username, _password, _fullName, _email,
+      } = req.body;
       const newUser = await models.User.create({
         username: _username,
         fullname: _fullName,
@@ -69,10 +71,8 @@ module.exports = {
       await models.User.update({
         fullname: _fullname,
         email: _email,
-      }, { where: id: req.params.id,}, {
-        raw: true,
-      });
-      const result = jsonHelper({status: true,}, null, 200);
+      }, { where: { id: req.params.id }, raw: true });
+      const result = jsonHelper({ status: true }, null, 200);
       res.status(200).json(result);
     } catch (error) {
       const result = jsonHelper(null, error.message, 500);
@@ -83,23 +83,23 @@ module.exports = {
     try {
       const user = await models.User.destroy({
         where: {
-          id: request.params.id,
+          id: req.params.id,
         },
       });
       if (user) {
         const result = jsonHelper({
           status: true,
         }, null, 200);
-        response.status(200).json(result);
+        res.status(200).json(result);
       } else {
         const result = jsonHelper({
           status: true,
         }, null, 404);
-        response.status(404).json(result);
+        res.status(404).json(result);
       }
     } catch (error) {
       const result = jsonHelper(null, error.message, 500);
-      response.status(500).json(result);
+      res.status(500).json(result);
     }
   },
-}
+};
