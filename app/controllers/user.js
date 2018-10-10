@@ -1,5 +1,5 @@
 import jsonHelper from '../helpers/jsonResponse';
-import models from '../db/models';
+import models from '../models';
 
 const bcrypt = require('bcrypt-nodejs');
 

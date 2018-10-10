@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt-nodejs');
-const models = require('../db/models');
+const models = require('../models');
 const jwt = require('../helpers/JwtHelper');
 const { jsonHelper } = require('../helpers/jsonResponse');
 
@@ -14,7 +14,7 @@ module.exports = {
         res.status(404).json(result);
         return;
       }
-      const id = user.id;
+      const { id } = user;
       const hashedPassword = auth.password;
       const isPasswordCorrect = await bcrypt.compare(password, hashedPassword);
       if (isPasswordCorrect) {

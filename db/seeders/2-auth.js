@@ -10,27 +10,27 @@ module.exports = {
       updatedAt: new Date(),
     }, {
       username: 'abcd456',
-      password: await bcrypt.hash('Love123', salt),
+      password: await bcrypt.hash('Love456', salt),
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
       username: 'abcd789',
-      password: await bcrypt.hash('Love123', salt),
+      password: await bcrypt.hash('Love789', salt),
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
       username: 'abcd1011',
-      password: await bcrypt.hash('Love123', salt),
+      password: await bcrypt.hash('Love1011', salt),
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
       username: 'abcd1213',
-      password: await bcrypt.hash('Love123', salt),
+      password: await bcrypt.hash('Love1213', salt),
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
       username: 'abcd1415',
-      password: await bcrypt.hash('Love123', salt),
+      password: await bcrypt.hash('Love1415', salt),
       createdAt: new Date(),
       updatedAt: new Date(),
     }], {});
