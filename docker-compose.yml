@@ -1,0 +1,18 @@
+version: "2"
+services:
+  app: 
+    build: .
+    ports: 
+      - 3000:3001
+    depends_on:
+      - mysql
+    environment:
+      PORT: 3000
+      NODE_ENV: docker
+      SECRET_KEY: nhatdeptrai
+  mysql:
+    image: mysql
+    environment:
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=demonslight123
+      - MYSQL_DB=test
