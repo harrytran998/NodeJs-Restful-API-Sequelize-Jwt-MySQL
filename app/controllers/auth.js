@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt-nodejs');
 const models = require('../models');
 const jwt = require('../helpers/JwtHelper');
-const { jsonHelper } = require('../helpers/jsonResponse');
+const { jsonHelper } = require('../helpers/jsonHelper');
 
 module.exports = {
   login: async (req, res) => {
@@ -57,4 +57,5 @@ module.exports = {
       res.status(200).json(result);
     }
   },
+	
 };

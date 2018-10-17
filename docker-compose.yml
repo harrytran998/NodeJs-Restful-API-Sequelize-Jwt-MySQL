@@ -7,7 +7,7 @@ services:
     depends_on:
       - mysql
     environment:
-      PORT: 3000
+      PORT: 6969
       NODE_ENV: docker
       SECRET_KEY: nhatdeptrai
   mysql:

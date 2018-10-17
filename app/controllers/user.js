@@ -1,4 +1,4 @@
-import jsonHelper from '../helpers/jsonResponse';
+import jsonHelper from '../helpers/jsonHelper';
 import models from '../models';
 
 const bcrypt = require('bcrypt-nodejs');

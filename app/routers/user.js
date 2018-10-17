@@ -2,7 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import controllers from '../controllers';
 
-const userRoute = express.userRouter();
+const userRoute = express.Router();
 
 userRoute.use(bodyParser.urlencoded({ extended: false }));
 userRoute.use(bodyParser.json());

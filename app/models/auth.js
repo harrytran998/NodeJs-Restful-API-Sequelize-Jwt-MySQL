@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       unique: true,
       validate: {
-        args: [2, 25],
+				args: [2, 25],
         msg: 'Length of username must in range [2, 25] !',
       },
     },
