@@ -9,5 +9,6 @@ authRoute.use(bodyParser.json());
 
 authRoute.post('/login', controllers.auth.login);
 authRoute.post('/changePassword', controllers.auth.changePassword);
+authRoute.post('/forgotPassword', controllers.auth.forgotPassword);
 
 module.exports = authRoute;

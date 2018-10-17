@@ -1,6 +1,8 @@
-const bcrypt = require('bcrypt-nodejs');
-const models = require('../models');
-const jwt = require('../helpers/JwtHelper');
+import bcrypt from 'bcrypt-nodejs';
+import models from '../models';
+import jwt from '../helpers/JwtHelper';
+import mailer from '../mailers';
+
 const { jsonHelper } = require('../helpers/jsonHelper');
 
 module.exports = {
@@ -57,5 +59,19 @@ module.exports = {
       res.status(200).json(result);
     }
   },
-	
+	forgotPassWord: async (req, res) => {
+		try {
+			const { username } = req.body;
+			const { email } = await models.User.findOne({ where: { username }, raw: true});
+			const password = await mailer.sendPassword(email);
+			const salt = await bcrypt.genSalt(10);
+			const hashedPassword = await bcrypt.hash(password, salt);
+			await models.user.update({ password: hashedPassword }, { where: { username } });
+			const result = jsonHelper({ status: true }, null, 200);
+			res.status(200).json(result);
+		} catch (error) {
+			const result = jsonHelper(null, error.message, 500);
+      response.status(500).json(result);
+		}
+	}
 };
