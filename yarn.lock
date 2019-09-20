@@ -949,8 +949,8 @@ generate-function@^2.0.0:
     is-property "^1.0.2"
 
 generate-password@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/generate-password/-/generate-password-1.4.0.tgz#a3f865c666f629c4f2852093466d83e7a0f16ee2"
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/generate-password/-/generate-password-1.4.2.tgz#77f344ec525f3bfdc1e50899c09e3c46ddb95dfd"
 
 generic-pool@^3.4.0:
   version "3.4.2"
